@@ -4,3 +4,4 @@
 # hardhat
 /cache
 /artifacts
+/typechain-types

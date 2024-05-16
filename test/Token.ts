@@ -14,6 +14,7 @@ describe("Token contract", function () {
     const { contract, owner } = await loadFixture(deployTokenFixture);
     const ownerBalance = await contract.balanceOf(owner.address);
 
+    expect(await contract.owner()).to.be.equal(owner.address);
     expect(await contract.totalSupply()).to.equal(ownerBalance);
   });
 

@@ -9,4 +9,16 @@ describe("Token contract", function () {
 
     expect(await contract.totalSupply()).to.equal(ownerBalance);
   });
+
+  it("Should allow token transfer between accounts", async () => {
+    const [, addr1, addr2] = await ethers.getSigners();
+    const contract = await ethers.deployContract("Token");
+
+    await contract.transfer(addr1, 50);
+    expect(await contract.balanceOf(addr1)).to.equal(50);
+
+    await contract.connect(addr1).transfer(addr2, 50);
+    expect(await contract.balanceOf(addr1)).to.equal(0);
+    expect(await contract.balanceOf(addr2)).to.equal(50);
+  });
 });

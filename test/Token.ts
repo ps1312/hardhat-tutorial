@@ -35,4 +35,12 @@ describe("Token contract", function () {
 
     await expect(transfer).to.be.revertedWith("Not enough tokens");
   });
+
+  it("Emits a Transfer event after successful transfer", async () => {
+    const { contract, owner, addr1 } = await loadFixture(deployTokenFixture);
+
+    await expect(contract.transfer(addr1, 50))
+      .to.emit(contract, "Transfer")
+      .withArgs(owner.address, addr1.address, 50);
+  });
 });

@@ -1,0 +1,14 @@
+{
+  "name": "hardhat-tutorial",
+  "version": "1.0.0",
+  "description": "This is created following https://hardhat.org/tutorial.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ps1312",
+  "license": "MIT",
+  "devDependencies": {
+    "hardhat": "^2.22.4"
+  }
+}

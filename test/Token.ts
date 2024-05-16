@@ -27,4 +27,12 @@ describe("Token contract", function () {
     expect(await contract.balanceOf(addr1)).to.equal(0);
     expect(await contract.balanceOf(addr2)).to.equal(50);
   });
+
+  it("Returns error when sender account doesn't have balance", async () => {
+    const { contract, addr1, addr2 } = await loadFixture(deployTokenFixture);
+
+    const transfer = contract.connect(addr1).transfer(addr2, 50);
+
+    await expect(transfer).to.be.revertedWith("Not enough tokens");
+  });
 });
